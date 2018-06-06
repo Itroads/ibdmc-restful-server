@@ -7,8 +7,15 @@ class Dashboard {
 
   async uploadImage (req, res, next) {
     try {
-      console.log('req.file', req.file)
-      res.end(' Perfect. ')
+      console.log('req.file = ', req.file)
+      res.json({
+        result: true,
+        data: {
+          img: req.file.filename
+        },
+        message: req.file.originalname + '上传成功'
+      })
+      res.end()
     } catch (error) {
       res.json({
         result: false,

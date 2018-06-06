@@ -11,8 +11,9 @@ const dashboardSchema = new Schema({
   },
   data: {
     any: {
+      background: {},
       border: {},
-      options: {}
+      echart: {}
     }
   },
   created: { type: Date, default: Date.now }
