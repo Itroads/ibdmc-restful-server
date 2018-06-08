@@ -12,6 +12,7 @@ import chalk from 'chalk'
 import templateRouter from './routes/template'
 import dashboardRouter from './routes/dashboard'
 import borderRouter from './routes/border'
+import recentImageRouter from './routes/recent_images'
 
 const app = express();
 const config = configLite(__dirname);
@@ -48,6 +49,7 @@ app.all('*', function (req, res, next) {
 app.use('/template', templateRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/border', borderRouter);
+app.use('/recent_image', recentImageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

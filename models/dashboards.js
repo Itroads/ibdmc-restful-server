@@ -6,16 +6,10 @@ const Schema = mongoose.Schema;
 const dashboardSchema = new Schema({
   name: { type: String, required: true, unique: true },
   root: {
-    border: {},
+    config: {},
     background: {}
   },
-  data: {
-    any: {
-      background: {},
-      border: {},
-      echart: {}
-    }
-  },
+  data: [],
   created: { type: Date, default: Date.now }
 })
 
