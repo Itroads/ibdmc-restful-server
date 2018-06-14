@@ -18,8 +18,8 @@ const dashboardSchema = new Schema({
         i: { type: String, required: true },
         componentList: { type: Array, required: true },
         bgstyle: {
-          bgcolorstyle: { type: String },
-          bgimagestyle: { type: String }
+          bgcolorstyle: { type: String, default: null },
+          bgimagestyle: { type: String, default: null }
         },
       }
     ],
