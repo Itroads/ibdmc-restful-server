@@ -17,7 +17,7 @@ const dashboardSchema = new Schema({
         h: { type: Number, required: true },
         i: { type: String, required: true },
         componentList: { type: Array, required: true },
-        bgstyle: { type: Object },
+        bgstyle: { type: Object, default:{} },
         echartsList: { type: Object }
       }
     ],
