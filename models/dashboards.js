@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const dashboardSchema = new Schema({
   name: { type: String, required: true, unique: true },
   root: {
-    background: { type: String, required: true }
+    background: { type: String }
   },
   data: {
     layout: [
@@ -18,8 +18,8 @@ const dashboardSchema = new Schema({
         i: { type: String, required: true },
         componentList: { type: Array, required: true },
         bgstyle: {
-          bgcolorstyle: { type: String, default: "" },
-          bgimagestyle: { type: String, default: "" }
+          bgcolorstyle: { type: String },
+          bgimagestyle: { type: String }
         },
       }
     ],
