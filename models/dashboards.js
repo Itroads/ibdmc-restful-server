@@ -21,6 +21,7 @@ const dashboardSchema = new Schema({
           bgcolorstyle: { type: String },
           bgimagestyle: { type: String }
         },
+        echartsList: { type: Map, required: true }
       }
     ],
     config: {
