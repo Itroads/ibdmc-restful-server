@@ -57,6 +57,7 @@ class Dashboard {
       let isHadQuery = await dashboardModel.findOne({name: req.body.name})
       if (!isHadQuery) {
         let result = await dashboardModel.create(req.body)
+        res.header("Access-Control-Allow-Headers", "Content-Type");
         res.json({
           result: true,
           data: result,
