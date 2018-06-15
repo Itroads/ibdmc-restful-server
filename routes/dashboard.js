@@ -33,4 +33,10 @@ router.post('/ishad', dashboardController.isHadDashboard)
 */
 router.post('/upload', upload.single('bgImage'), dashboardController.uploadImage)
 
+/*
+ * Restful api:  /dashboard/delete
+ * Description:  通过名字，判断是否已经存在
+*/
+router.post('/delete', dashboardController.deteleRecentImage)
+
 export default router

@@ -1,10 +1,30 @@
 'use strict'
 
+import mongodb from 'mongodb'
 import dashboardModel from '../models/dashboards'
 import recentImageModel from '../models/recent_images'
 
+const ObjectId = mongodb.ObjectId
+
 class Dashboard {
   // 这里构造函数，采用默认添加空的
+
+  async deleteDashboard (req, res, next) {
+    try {
+      await dashboardModel.deleteOne({ "_id": ObjectId(req.params.id) })
+      res.json({
+        result: true,
+        message: '删除成功'
+      })
+      res.end()
+    } catch (error) {
+      res.json({
+        result: false,
+        message: error,
+      })
+      res.end()
+    }
+  }
 
   async uploadImage (req, res, next) {
     try {
