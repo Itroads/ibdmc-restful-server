@@ -37,6 +37,12 @@ router.post('/upload', upload.single('bgImage'), dashboardController.uploadImage
  * Restful api:  /dashboard/delete
  * Description:  通过名字，判断是否已经存在
 */
-router.post('/delete', dashboardController.deleteDashboard)
+router.get('/delete/:id', dashboardController.deleteDashboard)
+
+/*
+ * Restful api:  /dashboard/update
+ * Description:  通过名字，判断是否已经存在
+*/
+router.post('/update', dashboardController.updateOneDashboard)
 
 export default router

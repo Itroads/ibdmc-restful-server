@@ -9,9 +9,30 @@ const ObjectId = mongodb.ObjectId
 class Dashboard {
   // 这里构造函数，采用默认添加空的
 
+  async updateOneDashboard (req, res, next) {
+    try {
+      let id = req.body.id
+      delete req.body['id']
+      let updateRes = await dashboardModel.update({ "_id": ObjectId(id) }, req.body).exec()
+      console.log('updateRes= ', updateRes)
+      res.json({
+        result: true,
+        data: updateRes,
+        message: '更新成功'
+      })
+      res.end()
+    } catch (error) {
+      res.json({
+        result: false,
+        message: error,
+      })
+      res.end()
+    }
+  }
+
   async deleteDashboard (req, res, next) {
     try {
-      await dashboardModel.deleteOne({ "_id": ObjectId(req.params.id) })
+      let delres = await dashboardModel.deleteOne({ "_id": ObjectId(req.params.id) })
       res.json({
         result: true,
         message: '删除成功'
