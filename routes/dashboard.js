@@ -1,12 +1,8 @@
 'use strict'
 
 import express from 'express'
-import multer from 'multer'
 import dashboardController from '../controller/dashboard'
 
-const upload = multer({
-  dest: './upload'
-})
 const router = express.Router()
 
 /*
@@ -26,12 +22,6 @@ router.post('/create', dashboardController.createDashboard)
  * Description:  通过名字，判断是否已经存在
 */
 router.post('/ishad', dashboardController.isHadDashboard)
-
-/*
- * Restful api:  /dashboard/upload
- * Description:  通过名字，判断是否已经存在
-*/
-router.post('/upload', upload.single('bgImage'), dashboardController.uploadImage)
 
 /*
  * Restful api:  /dashboard/delete

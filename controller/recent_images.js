@@ -9,9 +9,35 @@ const ObjectId = mongodb.ObjectId
 const uploadDir = path.resolve(__dirname, '../upload')
 
 class RecentImage {
+
+  async uploadImage(req, res, next) {
+    try {
+      // 上传图片的时候，要考虑滚动删除   这里先不做
+      await recentImageModel.create({
+        type: req.body.type,
+        originalname: req.file.originalname,
+        filename: req.file.filename
+      })
+      res.json({
+        result: true,
+        data: {
+          img: req.file.filename
+        },
+        message: req.file.originalname + ' 上传成功'
+      })
+      res.end()
+    } catch (error) {
+      res.json({
+        result: false,
+        message: error,
+      })
+      res.end()
+    }
+  }
+
   async getRecentImagesList (req, res, next) {
     try {
-      let imagelist = await recentImageModel.find({})
+      let imagelist = await recentImageModel.find({"type": req.params.type})
       res.json({
         result: true,
         data: imagelist,

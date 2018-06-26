@@ -47,30 +47,6 @@ class Dashboard {
     }
   }
 
-  async uploadImage (req, res, next) {
-    try {
-      // 上传图片的时候，要考虑滚动删除   这里先不做
-      await recentImageModel.create({
-        originalname: req.file.originalname,
-        filename: req.file.filename
-      })
-      res.json({
-        result: true,
-        data: {
-          img: req.file.filename
-        },
-        message: req.file.originalname + ' 上传成功'
-      })
-      res.end()
-    } catch (error) {
-      res.json({
-        result: false,
-        message: error,
-      })
-      res.end()
-    }
-  }
-
   async isHadDashboard (req, res, next) {
     try {
       let isHadQuery = await dashboardModel.findOne({ name: req.body.name })
@@ -98,7 +74,6 @@ class Dashboard {
       let isHadQuery = await dashboardModel.findOne({name: req.body.name})
       if (!isHadQuery) {
         let result = await dashboardModel.create(req.body)
-        res.header("Access-Control-Allow-Headers", "Content-Type");
         res.json({
           result: true,
           data: result,
