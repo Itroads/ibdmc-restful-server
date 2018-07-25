@@ -7,7 +7,6 @@ import recentImageController from '../controller/recent_images'
 const router = express.Router()
 
 const storage = multer.diskStorage({
-  // dest: './upload'
   destination: './upload',
   filename: (req, file, cb) => {
     let extend = ''

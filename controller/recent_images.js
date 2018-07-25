@@ -25,13 +25,13 @@ class RecentImage {
         },
         message: req.file.originalname + ' 上传成功'
       })
-      res.end()
+      res.end('success')
     } catch (error) {
       res.json({
         result: false,
         message: error,
       })
-      res.end()
+      res.end('false')
     }
   }
 
